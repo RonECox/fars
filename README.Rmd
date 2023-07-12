@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/RonECox/fars/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/RonECox/fars/actions/workflows/R-CMD-check.yaml)
+[![Travis build status](https://travis-ci.com/RonECox/fars.svg?branch=main)](https://travis-ci.com/RonECox/fars)
 <!-- badges: end -->
 
 The goal of fars is to ...
