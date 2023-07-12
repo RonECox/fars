@@ -10,7 +10,12 @@
 status](https://travis-ci.com/RonECox/fars.svg?branch=main)](https://travis-ci.com/RonECox/fars)
 <!-- badges: end -->
 
-The goal of fars is to …
+The goal of fars is to simplify the analysis of fatality data from the
+Fatality Analysis Reporting System (FARS) hosted on the National Highway
+Traffic Safety Administration (NHTSA) website.
+
+[FARS
+Data](https://www.nhtsa.gov/research-data/fatality-analysis-reporting-system-fars)
 
 ## Installation
 
