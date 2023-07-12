@@ -1,0 +1,78 @@
+---
+title: "Introduction to fars"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to fars}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+### 2023-07-11
+***
+## Overview
+The fars collection of functions are used to ingest and analyze raw data downloaded from the Fatality Analysis Reporting System hosted on the National Highway Traffic Safety Administration (NHTSA) website:
+
+https://www.nhtsa.gov/research-data/fatality-analysis-reporting-system-fars
+
+The fars collection includes the following functions:
+
+* `fars_read()`
+* `fars_read_years()`
+* `fars_summarize_years()`
+* `fars_map_state()`
+* `make_filename()`
+
+#### Dependencies
+>The following packages are required to use the fars function:
+`readr()`, `dplyer()`, `tidyr()`, `maps()` and `graphics()`.
+
+***
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+library(fars)
+```
+
+## FARS Data
+The fars functions read data from the *working directory* in the format of the
+FARS: `r make_filename(2013)`. Each file represents a year of accident data in 
+a compressed CSV. The fars helper function, `make_filename()`, takes a year as
+an input parameter and generates the aforementioned file format. This output is
+used by many of the other fars functions.
+
+## `fars_read()`
+This function checks if the specified file exists, reads the CSV file into a 
+data frame, suppresses any messages, and converts the data frame into a tibble
+before returning it as the output.
+```{r fars_read}
+fars_read("accident_2014.csv.bz2")
+```
+
+## `fars_read_years()`
+This function reads and processes data files in the working directory for 
+multiple years; it takes a vector of numeric years as input and returns a 
+list of processed data frames.
+```{r fars_read_years}
+fars_read_years(c(2013,2014,2015))
+```
+
+## `fars_summarize_years()`
+This function summarizes the data obtained from multiple years by counting the 
+number of records for each month in each year. The function takes a vector of 
+years as input and returns a data frame with summarized information.
+```{r fars_summarize_years}
+fars_summarize_years(2013:2015)
+```
+
+## `fars_map_state()`
+This function plots the locations of accidents on a map for a specific state and year using data from the Fatality Analysis Reporting System (FARS). The function takes two parameters: `state.num`, which represents the state number and `year`, which represents the year of the data.
+```{r fars_map_state, fig.dim=c(7,7)}
+# Plot 2013 FARS data for the state of Texas
+fars_map_state(48, 2013)
+```
+
